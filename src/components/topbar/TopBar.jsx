@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./topbar.css";
 
 export default function TopBar() {
+    const user = true;
     return (
         <div className="top">
             <div className="topLeft d-flex align-items-center justify-content-center">
@@ -11,16 +13,33 @@ export default function TopBar() {
                 <i className="topIcon fab fa-instagram-square"></i>
             </div>
             <div className="topMiddle ">
-                <ul className="topList d-flex justify-content-center m-0 p-0">
-                    <li className="topListIteam">HOME</li>
-                    <li className="topListIteam">BLOG</li>
-                    <li className="topListIteam">CONTACT</li>
-                    <li className="topListIteam">LOGOUT</li>
+                <ul className="topList d-flex justify-content-center">
+                    <Link className="link topListIteam" to="/">HOME</Link>
+                    <Link className="link topListIteam" to="/blogs">BLOG</Link>
+                    <Link className="link topListIteam" to="/contact">CONTACT</Link>
+                    <Link className="link topListIteam" to="/register">REGISTER</Link>
                 </ul>
             </div>
             <div className="topRight d-flex align-items-center justify-content-center">
-                <img className="topImg rounded-circle z-depth-2" alt="100x100" src="https://media-exp1.licdn.com/dms/image/C5103AQHI6p8E8J-pyw/profile-displayphoto-shrink_200_200/0/1567059412900?e=1648080000&v=beta&t=GBZztxZ0Fb4yJyUwLyBlVj8oWJ8IacW9pDN_tvxcDVU" />
+                {user ? (
+                    <Link className="link" to="/settings">
+                        <img
+                            className="topImg  rounded-circle"
+                            src="https://media-exp1.licdn.com/dms/image/C5103AQHI6p8E8J-pyw/profile-displayphoto-shrink_200_200/0/1567059412900?e=1648080000&v=beta&t=GBZztxZ0Fb4yJyUwLyBlVj8oWJ8IacW9pDN_tvxcDVU"
+                            alt=""
+                        />
+                    </Link>
+                ) : (
+                    <ul className="topList">
+                        <li className="topListItem">
+                            <Link className="link" to="/login">
+                                LOGIN
+                            </Link>
+                        </li>
+                    </ul>
+                )}
                 <i className="topSearchIcon fas fa-search"></i>
+
             </div>
 
 
